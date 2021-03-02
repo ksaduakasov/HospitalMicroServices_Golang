@@ -8,7 +8,6 @@ import (
 	"strconv"
 )
 
-var jsonContentType = "application/json; charset=utf-8"
 var doctorRepository repositories.DoctorRepository
 
 func RouteDoctors(router *gin.Engine)  {

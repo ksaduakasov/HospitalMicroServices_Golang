@@ -12,5 +12,6 @@ type Doctor struct {
 	WorkExp int
 	DepartmentID int
 	IsAvailable bool
+	DoctorMultiplier float64
 
 }

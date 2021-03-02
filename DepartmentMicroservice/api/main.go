@@ -9,6 +9,9 @@ import (
 	"log"
 )
 
+var jsonContentType = "application/json; charset=utf-8"
+
+
 func openDB(dsn string) (*pgxpool.Pool, error) {
 	pool, err := pgxpool.Connect(context.Background(), dsn)
 	if err != nil {
@@ -25,10 +28,12 @@ func main() {
 	var err error
 	pool, err = openDB(*dsn)
 	doctorRepository = repositories.NewDoctorRepository(pool)
+	departmentRepository = repositories.NewDepartmentsRepository(pool)
 	if err != nil{
 		log.Fatalf("Failed to connect to db: ", err)
 	}
 	router  := gin.Default()
 	RouteDoctors(router)
+	RouteDepartments(router)
 	router.Run(":4000")
 }
