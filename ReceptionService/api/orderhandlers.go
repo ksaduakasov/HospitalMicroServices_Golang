@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core/interfaces"
+	"github.com/Fring02/HospitalMicroservices/ReceptionService/requests"
 	"github.com/gin-gonic/gin"
 	"strconv"
 )
@@ -15,6 +16,7 @@ func RouteOrders(router *gin.Engine)  {
 	router.POST("/orders", CreateOrder)
 	router.DELETE("/orders/:id", DeleteOrder)
 	router.PUT("/orders/:id", UpdateOrder)
+	router.GET("/availableDoctors")
 }
 
 func GetAllOrders(c *gin.Context)  {
@@ -40,8 +42,18 @@ func CreateOrder(c *gin.Context)  {
 		return
 	}
 	if orderRepository.CreateOrder(*order) {
-		c.Data(200, jsonContentType, []byte("Created order"))
-		return
+		c.Data(200, jsonContentType, []byte("Created order \n"))
+		dep := requests.GetDepartmentByDiseaseId(order.DiseaseId)
+		if dep == nil {
+			c.Data(400, jsonContentType, []byte("Failed to find department by disease"))
+		}
+		availableDoctors := requests.GetAvailableDoctors(dep)
+		if len(availableDoctors) == 0 {
+			c.Data(200, jsonContentType, []byte("No available doctors for now. Wait"))
+		} else {
+			doctor := availableDoctors[0]
+			c.JSON(200, doctor)
+		}
 	}
 	c.Data(500, jsonContentType, []byte("Failed to create order"))
 }

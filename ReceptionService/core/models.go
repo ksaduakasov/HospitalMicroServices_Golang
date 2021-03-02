@@ -8,4 +8,9 @@ type Order struct {
  PatientId int
 }
 
-
+type Department struct {
+ Id int
+ Name string
+ Description string
+ DiseaseId string
+}
