@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
+	hospitalpb "github.com/Fring02/HospitalMicroservices/grpc"
 	"io"
 	"log"
 	"net/http"

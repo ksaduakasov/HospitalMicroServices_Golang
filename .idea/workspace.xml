@@ -21,14 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="28560f81-8ec2-4793-a455-78f83dbb7026" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceptionService/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/api/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceptionService/api/orderhandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/api/orderhandlers.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceptionService/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceptionService/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceptionService/requests/receptionRequests.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/client.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/grpc/client/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital.pb.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital.proto" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital_grpc.pb.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/requests/requests.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/pkg/requests/requests.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,48 +68,24 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\ReceptionService\pkg" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\grpc\client" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\grpc" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build local/Fring02/HospitalMicroservices/ReceptionService/api">
-    <configuration name="go build local/Fring02/HospitalMicroservices" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="HospitalMicroservices" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <filePath value="$PROJECT_DIR$/ReceptionService/api/main.go" />
-      <package value="local/Fring02/HospitalMicroservices/ReceptionService/api" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build local/Fring02/HospitalMicroservices/ReceptionService/api" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="HospitalMicroservices" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/ReceptionService" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/ReceptionService/api/main.go" />
-      <package value="local/Fring02/HospitalMicroservices/ReceptionService/api" />
+      <package value="github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build local/Fring02/HospitalMicroservices/grpc/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="HospitalMicroservices" />
-      <working_directory value="$PROJECT_DIR$/grpc" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/grpc/client/main.go" />
-      <package value="local/Fring02/HospitalMicroservices/grpc/client" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices/ReceptionService/api" />
-      <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices" />
-      <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices/grpc/client" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices/ReceptionService/api" />
-        <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices/grpc/client" />
-        <item itemvalue="Go Build.go build local/Fring02/HospitalMicroservices" />
+        <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
       </list>
     </recent_temporary>
   </component>
@@ -137,34 +113,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="195" key="#Go_Modules/0.0.1536.824@0.0.1536.824" timestamp="1614616913829" />
-    <state x="219" y="60" width="1097" height="733" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614684489758">
+    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614694777422">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="219" y="60" width="1097" height="733" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1614684489758" />
+    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1614694777422" />
     <state width="979" height="546" key="DebuggerActiveHint" timestamp="1614670135339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="979" height="546" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1614670135339" />
-    <state x="496" y="110" key="FileChooserDialogImpl" timestamp="1614687512972">
+    <state x="496" y="110" key="FileChooserDialogImpl" timestamp="1614693795551">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="496" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1614687512972" />
-    <state width="1485" height="281" key="GridCell.Tab.0.bottom" timestamp="1614686630214">
+    <state x="496" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1614693795551" />
+    <state width="1485" height="281" key="GridCell.Tab.0.bottom" timestamp="1614695112353">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614686630214" />
-    <state width="1485" height="281" key="GridCell.Tab.0.center" timestamp="1614686630214">
+    <state width="1485" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614695112353" />
+    <state width="1485" height="281" key="GridCell.Tab.0.center" timestamp="1614695112353">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1614686630214" />
-    <state width="1485" height="281" key="GridCell.Tab.0.left" timestamp="1614686630213">
+    <state width="1485" height="281" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1614695112353" />
+    <state width="1485" height="281" key="GridCell.Tab.0.left" timestamp="1614695112353">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1614686630213" />
-    <state width="1485" height="281" key="GridCell.Tab.0.right" timestamp="1614686630214">
+    <state width="1485" height="281" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1614695112353" />
+    <state width="1485" height="281" key="GridCell.Tab.0.right" timestamp="1614695112353">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1614686630214" />
+    <state width="1485" height="281" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1614695112353" />
     <state width="1485" height="247" key="GridCell.Tab.1.bottom" timestamp="1614682030702">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
