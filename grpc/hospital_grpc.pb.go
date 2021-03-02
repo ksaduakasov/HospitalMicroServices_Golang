@@ -30,7 +30,7 @@ func NewDepartmentServiceClient(cc grpc.ClientConnInterface) DepartmentServiceCl
 }
 
 func (c *departmentServiceClient) GetDoctors(ctx context.Context, in *DoctorsRequest, opts ...grpc.CallOption) (DepartmentService_GetDoctorsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &DepartmentService_ServiceDesc.Streams[0], "/hospital.DepartmentService/GetDoctors", opts...)
+	stream, err := c.cc.NewStream(ctx, &DepartmentService_ServiceDesc.Streams[0], "/grpc.DepartmentService/GetDoctors", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func (x *departmentServiceGetDoctorsServer) Send(m *DoctorsResponse) error {
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var DepartmentService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "hospital.DepartmentService",
+	ServiceName: "grpc.DepartmentService",
 	HandlerType: (*DepartmentServiceServer)(nil),
 	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{

@@ -25,7 +25,7 @@ func GetDepartmentByDiseaseId(diseaseId int) *core.Department {
 	return dep
 }
 func getAvailableDoctorsFromDepartmentServer(dep *core.Department, client hospitalpb.DepartmentServiceClient) []*hospitalpb.DoctorsResponse {
-	req := &hospitalpb.DoctorsRequest{DepartmentId: int32(dep.Id), Status: true}
+	req := &hospitalpb.DoctorsRequest{DepartmentId: int32(dep.Id), Status: true, DiseaseId: int32(dep.DiseaseId)}
 	ctx := context.Background()
 	stream, err := client.GetDoctors(ctx, req)
 	if err != nil {
