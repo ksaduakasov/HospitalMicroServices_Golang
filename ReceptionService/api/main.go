@@ -4,9 +4,10 @@ import (
 	"context"
 	"flag"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg"
-	"github.com/jackc/pgx/pgxpool"
+	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg/repositories"
+	"github.com/gin-gonic/gin"
+	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
- 	"github.com/gin-gonic/gin"
 )
 
 func openDB(dsn string) (*pgxpool.Pool, error) {
@@ -26,12 +27,8 @@ func main() {
 	if err != nil{
 		log.Fatalf("Failed to connect to db: ", err)
 	}
+	orderRepository = repositories.NewOrderRepository(pkg.Conn)
 	router  := gin.Default()
-	router.GET("/example", func(c *gin.Context) {
-
-		c.JSON(200, gin.H{
-			"message": "example",
-		}) // gin.H is a shortcut for map[string]interface{}
-	})
-	router.Run(":4000") // listen and serve on port 8080
+	RouteOrders(router)
+	router.Run(":4000") // listen and serve on port 4000
 }

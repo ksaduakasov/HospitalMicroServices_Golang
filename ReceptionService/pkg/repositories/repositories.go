@@ -4,22 +4,21 @@ import (
 	"context"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core/interfaces"
-	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg"
-	"github.com/jackc/pgx/pgxpool"
+	"github.com/jackc/pgx/v4/pgxpool"
 	"log"
 )
 type OrderRepository struct {
 	pool pgxpool.Pool
 }
 
-func NewOrderRepository() interfaces.IOrdersRepository {
-	return &OrderRepository{pool: *pkg.Conn}
+func NewOrderRepository(conn *pgxpool.Pool) interfaces.IOrdersRepository {
+	return &OrderRepository{*conn}
 }
 func (r *OrderRepository) CreateOrder(order core.Order) bool {
-	sql := "INSERT INTO patient_orders(id, disease_id, patient_id, title, description) " +
-		"VALUES($1, $2, $3, $4, $5) RETURNING id";
+	sql := "INSERT INTO patient_orders(disease_id, patient_id, title, description) " +
+		"VALUES($1, $2, $3, $4) RETURNING id";
 	row := r.pool.QueryRow(context.Background(),
-		sql, order.Id, order.DiseaseId, order.PatientId, order.Title, order.Description)
+		sql, order.DiseaseId, order.PatientId, order.Title, order.Description)
 	var id int
 	err := row.Scan(&id)
 	if err != nil {
