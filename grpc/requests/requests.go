@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
-	hospitalpb "github.com/Fring02/HospitalMicroservices/grpc"
 	"io"
 	"log"
 	"net/http"
@@ -33,18 +32,18 @@ func getAvailableDoctorsFromDepartmentServer(dep *core.Department, client hospit
 	}
 	defer stream.CloseSend()
 	doctors := []*hospitalpb.DoctorsResponse{}
-	LOOP:
-		for {
-			resp, err := stream.Recv()
-			if err != nil {
-				if err == io.EOF{
-					break LOOP
-				}
-				log.Fatalf("error with response from department server: %v", err)
+LOOP:
+	for {
+		resp, err := stream.Recv()
+		if err != nil {
+			if err == io.EOF{
+				break LOOP
 			}
-			doctors = append(doctors, resp)
+			log.Fatalf("error with response from department server: %v", err)
 		}
-		return doctors
+		doctors = append(doctors, resp)
+	}
+	return doctors
 }
 
 func GetAvailableDoctors(dep *core.Department) []*hospitalpb.DoctorsResponse {

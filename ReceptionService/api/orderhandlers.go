@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core/interfaces"
-	"github.com/Fring02/HospitalMicroservices/ReceptionService/requests"
 	"github.com/gin-gonic/gin"
 	"strconv"
 )
@@ -43,7 +42,7 @@ func CreateOrder(c *gin.Context)  {
 	}
 	if orderRepository.CreateOrder(*order) {
 		c.Data(200, jsonContentType, []byte("Created order \n"))
-		dep := requests.GetDepartmentByDiseaseId(order.DiseaseId)
+		/*dep := requests.GetDepartmentByDiseaseId(order.DiseaseId)
 		if dep == nil {
 			c.Data(400, jsonContentType, []byte("Failed to find department by disease"))
 		}
@@ -53,7 +52,7 @@ func CreateOrder(c *gin.Context)  {
 		} else {
 			doctor := availableDoctors[0]
 			c.JSON(200, doctor)
-		}
+		}*/
 	}
 	c.Data(500, jsonContentType, []byte("Failed to create order"))
 }
