@@ -98,3 +98,36 @@ func (d *DoctorRepository) UpdateDoctor(doctor core.Doctor)  (bool, error){
 	return true, nil
 
 }
+
+func (d *DoctorRepository) FindAvailableDoctors(departmentID int32, diseaseID int32, isAvailable bool) ([]*core.Doctor, int32) {
+
+	rows, err := d.conn.Query(context.Background(),
+		"SELECT * FROM doctors WHERE department_id = $1 AND isAvailable = $2", departmentID, isAvailable)
+	if err != nil {
+		log.Printf("BAD GET REQUEST: %v", err)
+		return nil, 0
+	}
+	defer rows.Close()
+	var doctors []*core.Doctor
+	for rows.Next() {
+		doctor := &core.Doctor{}
+		err = rows.Scan(&doctor.ID, &doctor.Firstname, &doctor.Lastname, &doctor.Patronymic, &doctor.Phone,
+			&doctor.Email, &doctor.Description, &doctor.WorkExp, &doctor.DepartmentID, &doctor.IsAvailable,
+			&doctor.DoctorMultiplier)
+		if err != nil {
+			return nil, 0
+		}
+		doctors = append(doctors, doctor)
+	}
+
+	row := d.conn.QueryRow(context.Background(),
+		"SELECT price FROM diseases WHERE disease_id = $1", diseaseID)
+	var price int32
+	err = row.Scan(price)
+	if err != nil {
+		log.Printf("BAD GET REQUEST: %v", err)
+		return nil, 0
+	}
+	return doctors, price
+
+}

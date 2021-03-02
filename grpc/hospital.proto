@@ -1,0 +1,21 @@
+syntax = "proto3";
+package hospital;
+option go_package="github.com\\Alemkhan\\HospitalMicroservices\\grpc\\hospitalpb;hospitalpb";
+// gr
+
+message DoctorsRequest{
+  int32 departmentId = 1;
+  int32 disease_id =2;
+  bool status = 3;
+}
+message DoctorsResponse{
+  int32 doctorId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string patronymic = 4;
+  int32 departmentId = 5;
+  int32 price = 6;
+}
+service DepartmentService{
+  rpc GetDoctors(DoctorsRequest) returns (stream DoctorsResponse);
+}

@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-var doctorRepository repositories.DoctorRepository
+var DoctorRepository repositories.DoctorRepository
 
 func RouteDoctors(router *gin.Engine)  {
 
@@ -21,7 +21,7 @@ func RouteDoctors(router *gin.Engine)  {
 }
 
 func GetDoctors(c *gin.Context)  {
-	doctors := doctorRepository.GetDoctors()
+	doctors := DoctorRepository.GetDoctors()
 	c.JSON(200, doctors)
 }
 
@@ -30,7 +30,7 @@ func GetDoctorByID(c *gin.Context)  {
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
-	doctor := doctorRepository.GetDoctorByID(id)
+	doctor := DoctorRepository.GetDoctorByID(id)
 	c.JSON(200, doctor)
 }
 
@@ -41,7 +41,7 @@ func CreateDoctor(c *gin.Context)  {
 	if err != nil {
 		c.Data(400, jsonContentType, []byte("Fill all fields"))
 	}
-	id, err := doctorRepository.CreateDoctor(*doctor)
+	id, err := DoctorRepository.CreateDoctor(*doctor)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to create a doctor"))
 	} else {
@@ -56,12 +56,12 @@ func DeleteDoctor(c *gin.Context)  {
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
-	doctor := doctorRepository.GetDoctorByID(id)
+	doctor := DoctorRepository.GetDoctorByID(id)
 	if doctor == nil {
 		c.Data(400, jsonContentType, []byte("No such doctor in database"))
 		return
 	}
-	_, err = doctorRepository.DeleteDoctor(doctor.ID)
+	_, err = DoctorRepository.DeleteDoctor(doctor.ID)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to delete the doctor"))
 	} else {
@@ -76,7 +76,7 @@ func UpdateDoctor(c *gin.Context)  {
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
-	doctor := doctorRepository.GetDoctorByID(id)
+	doctor := DoctorRepository.GetDoctorByID(id)
 
 	if doctor == nil {
 		c.Data(400, jsonContentType, []byte("There is no such doctor"))
@@ -90,7 +90,7 @@ func UpdateDoctor(c *gin.Context)  {
 		return
 	}
 	updatedDoctor.ID = id
-	_, err = doctorRepository.UpdateDoctor(*updatedDoctor)
+	_, err = DoctorRepository.UpdateDoctor(*updatedDoctor)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to update the doctor"))
 		return

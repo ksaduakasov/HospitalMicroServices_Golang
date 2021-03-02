@@ -1,0 +1,3 @@
+package hospitalpb
+var GrpcClient DepartmentServiceClient
+var GrpcServer DepartmentServiceServer

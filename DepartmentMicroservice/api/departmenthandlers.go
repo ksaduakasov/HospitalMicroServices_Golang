@@ -1,4 +1,4 @@
-package main
+package api
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 )
 
-var departmentRepository repositories.DepartmentsRepository
+var DepartmentRepository repositories.DepartmentsRepository
 
 func RouteDepartments(router *gin.Engine)  {
 
@@ -21,16 +21,16 @@ func RouteDepartments(router *gin.Engine)  {
 }
 
 func GetDepartments(c *gin.Context)  {
-	departments := departmentRepository.GetDepartments()
+	departments := DepartmentRepository.GetDepartments()
 	c.JSON(200, departments)
 }
 
 func GetDepartmentByID(c *gin.Context)  {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
-		c.Data(400, jsonContentType, []byte("Incorrect format"))
+		c.Data(400,jsonContentType, []byte("Incorrect format"))
 	}
-	department := departmentRepository.GetDepartmentByID(id)
+	department := DepartmentRepository.GetDepartmentByID(id)
 	c.JSON(200, department)
 }
 
@@ -41,7 +41,7 @@ func CreateDepartment(c *gin.Context)  {
 	if err != nil {
 		c.Data(400, jsonContentType, []byte("Fill all fields"))
 	}
-	id, err := departmentRepository.CreateDepartment(*department)
+	id, err := DepartmentRepository.CreateDepartment(*department)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to create a department"))
 	} else {
@@ -56,12 +56,12 @@ func DeleteDepartment(c *gin.Context)  {
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
-	department := departmentRepository.GetDepartmentByID(id)
+	department := DepartmentRepository.GetDepartmentByID(id)
 	if department == nil {
 		c.Data(400, jsonContentType, []byte("No such department in database"))
 		return
 	}
-	_, err = departmentRepository.DeleteDepartment(department.ID)
+	_, err = DepartmentRepository.DeleteDepartment(department.ID)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to delete the department"))
 	} else {
@@ -76,7 +76,7 @@ func UpdateDepartment(c *gin.Context)  {
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
-	department := departmentRepository.GetDepartmentByID(id)
+	department := DepartmentRepository.GetDepartmentByID(id)
 
 	if department == nil {
 		c.Data(400, jsonContentType, []byte("There is no such department"))
@@ -90,7 +90,7 @@ func UpdateDepartment(c *gin.Context)  {
 		return
 	}
 	updatedDepartment.ID = id
-	_, err = departmentRepository.UpdateDepartment(*updatedDepartment)
+	_, err = DepartmentRepository.UpdateDepartment(*updatedDepartment)
 	if err != nil {
 		c.Data(500, jsonContentType, []byte("Failed to update the department"))
 		return
