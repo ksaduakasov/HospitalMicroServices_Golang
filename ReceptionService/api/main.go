@@ -5,10 +5,8 @@ import (
 	"flag"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg/repositories"
-	hospitalpb "github.com/Fring02/HospitalMicroservices/grpc"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v4/pgxpool"
-	"google.golang.org/grpc"
 	"log"
 )
 
@@ -30,13 +28,6 @@ func main() {
 		log.Fatalf("Failed to connect to db: ", err)
 	}
 
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
-	if err != nil {
-		log.Fatalf("Could not connect: %v", err)
-	}
-	defer conn.Close()
-	log.Printf("Grpc client listening on 50051")
-	hospitalpb.GrpcClient = hospitalpb.NewDepartmentServiceClient(conn)
 	orderRepository = repositories.NewOrderRepository(pkg.Conn)
 	router  := gin.Default()
 	RouteOrders(router)
