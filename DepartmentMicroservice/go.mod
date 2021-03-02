@@ -1,4 +1,4 @@
-module github.com/Fring02/HospitalMicroservices/ReceptionService
+module github.com/Fring02/HospitalMicroservices/DepartmentMicroservice
 
 go 1.15
 
