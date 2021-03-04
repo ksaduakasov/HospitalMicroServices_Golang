@@ -9,7 +9,7 @@ import (
 func OpenDB(dsn string) (*pgxpool.Pool, error) {
 	pool, err := pgxpool.Connect(context.Background(), dsn)
 	if err != nil {
-		log.Println("Connection for database is established")
+		log.Println("Connection for database couldn't be established")
 		return nil, err
 	}
 	return pool, nil

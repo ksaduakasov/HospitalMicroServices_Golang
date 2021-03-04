@@ -5,12 +5,14 @@ import (
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core/interfaces"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg/requests"
 	"github.com/gin-gonic/gin"
+	"log"
 	"strconv"
 )
+
 var jsonContentType = "application/json; charset=utf-8"
 var orderRepository interfaces.IOrdersRepository
 
-func RouteOrders(router *gin.Engine)  {
+func RouteOrders(router *gin.Engine) {
 	router.GET("/orders", GetAllOrders)
 	router.GET("/orders/:id", GetOrderById)
 	router.POST("/orders", CreateOrder)
@@ -19,12 +21,12 @@ func RouteOrders(router *gin.Engine)  {
 	router.GET("/availableDoctors")
 }
 
-func GetAllOrders(c *gin.Context)  {
+func GetAllOrders(c *gin.Context) {
 	orders := orderRepository.GetAllOrders()
 	c.JSON(200, orders)
 }
 
-func GetOrderById(c *gin.Context)  {
+func GetOrderById(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect id format"))
@@ -34,7 +36,7 @@ func GetOrderById(c *gin.Context)  {
 	c.JSON(200, order)
 }
 
-func CreateOrder(c *gin.Context)  {
+func CreateOrder(c *gin.Context) {
 	order := &core.Order{}
 	err := c.BindJSON(order)
 	if err != nil {
@@ -43,22 +45,27 @@ func CreateOrder(c *gin.Context)  {
 	}
 	if orderRepository.CreateOrder(*order) {
 		c.Data(200, jsonContentType, []byte("Created order \n"))
+		log.Printf("Trying to find department with diseaseId: %v", order.DiseaseId)
 		dep := requests.GetDepartmentByDiseaseId(order.DiseaseId)
 		if dep == nil {
 			c.Data(400, jsonContentType, []byte("Failed to find department by disease"))
+			return
 		}
+		log.Printf("Found department with id: %v", dep.Id)
+		log.Printf("Trying to find available doctors with departmentId: %v", dep.Id)
 		availableDoctors := requests.GetAvailableDoctors(dep)
 		if len(availableDoctors) == 0 {
-			c.Data(200, jsonContentType, []byte("No available doctors for now. Wait"))
+			c.Data(200, jsonContentType, []byte("No available doctors for now. Please wait\n"))
 		} else {
 			doctor := availableDoctors[0]
 			c.JSON(200, doctor)
 		}
+	} else {
+		c.Data(500, jsonContentType, []byte("Failed to create order"))
 	}
-	c.Data(500, jsonContentType, []byte("Failed to create order"))
 }
 
-func DeleteOrder(c *gin.Context)  {
+func DeleteOrder(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect id format"))
@@ -76,7 +83,7 @@ func DeleteOrder(c *gin.Context)  {
 	c.Data(500, jsonContentType, []byte("Failed to delete order"))
 }
 
-func UpdateOrder(c *gin.Context)  {
+func UpdateOrder(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect id format"))
@@ -98,7 +105,7 @@ func UpdateOrder(c *gin.Context)  {
 	c.Data(500, jsonContentType, []byte("Failed to update order"))
 }
 
-func updateValues(order *core.Order, updateOrder *core.Order)  {
+func updateValues(order *core.Order, updateOrder *core.Order) {
 	if updateOrder.PatientId > 0 {
 		order.PatientId = updateOrder.PatientId
 	}

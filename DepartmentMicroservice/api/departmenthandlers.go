@@ -10,31 +10,37 @@ import (
 
 var DepartmentRepository repositories.DepartmentsRepository
 
-func RouteDepartments(router *gin.Engine)  {
-
+func RouteDepartments(router *gin.Engine) {
 	router.GET("/departments", GetDepartments)
 	router.GET("/departments/:id", GetDepartmentByID)
+	router.GET("/departments/:id/disease", GetDepartmentsByDiseaseId)
 	router.POST("/departments", CreateDepartment)
 	router.DELETE("/departments/:id", DeleteDepartment)
 	router.PUT("/departments/:id", UpdateDepartment)
-
 }
 
-func GetDepartments(c *gin.Context)  {
+func GetDepartments(c *gin.Context) {
 	departments := DepartmentRepository.GetDepartments()
 	c.JSON(200, departments)
 }
-
-func GetDepartmentByID(c *gin.Context)  {
+func GetDepartmentsByDiseaseId(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
-		c.Data(400,jsonContentType, []byte("Incorrect format"))
+		c.Data(400, jsonContentType, []byte("Incorrect format"))
+	}
+	departments := DepartmentRepository.GetDepartmentsByDiseaseId(id)
+	c.JSON(200, departments)
+}
+func GetDepartmentByID(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil || id < 1 {
+		c.Data(400, jsonContentType, []byte("Incorrect format"))
 	}
 	department := DepartmentRepository.GetDepartmentByID(id)
 	c.JSON(200, department)
 }
 
-func CreateDepartment(c *gin.Context)  {
+func CreateDepartment(c *gin.Context) {
 
 	department := &core.Department{}
 	err := c.BindJSON(department)
@@ -50,7 +56,7 @@ func CreateDepartment(c *gin.Context)  {
 
 }
 
-func DeleteDepartment(c *gin.Context)  {
+func DeleteDepartment(c *gin.Context) {
 
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
@@ -70,7 +76,7 @@ func DeleteDepartment(c *gin.Context)  {
 
 }
 
-func UpdateDepartment(c *gin.Context)  {
+func UpdateDepartment(c *gin.Context) {
 
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {

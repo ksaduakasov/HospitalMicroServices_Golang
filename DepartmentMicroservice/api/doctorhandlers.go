@@ -10,7 +10,7 @@ import (
 
 var DoctorRepository repositories.DoctorRepository
 
-func RouteDoctors(router *gin.Engine)  {
+func RouteDoctors(router *gin.Engine) {
 
 	router.GET("/doctors", GetDoctors)
 	router.GET("/doctors/:id", GetDoctorByID)
@@ -20,12 +20,12 @@ func RouteDoctors(router *gin.Engine)  {
 
 }
 
-func GetDoctors(c *gin.Context)  {
+func GetDoctors(c *gin.Context) {
 	doctors := DoctorRepository.GetDoctors()
 	c.JSON(200, doctors)
 }
 
-func GetDoctorByID(c *gin.Context)  {
+func GetDoctorByID(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
 		c.Data(400, jsonContentType, []byte("Incorrect format"))
@@ -34,7 +34,7 @@ func GetDoctorByID(c *gin.Context)  {
 	c.JSON(200, doctor)
 }
 
-func CreateDoctor(c *gin.Context)  {
+func CreateDoctor(c *gin.Context) {
 
 	doctor := &core.Doctor{}
 	err := c.BindJSON(doctor)
@@ -50,7 +50,7 @@ func CreateDoctor(c *gin.Context)  {
 
 }
 
-func DeleteDoctor(c *gin.Context)  {
+func DeleteDoctor(c *gin.Context) {
 
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
@@ -70,7 +70,7 @@ func DeleteDoctor(c *gin.Context)  {
 
 }
 
-func UpdateDoctor(c *gin.Context)  {
+func UpdateDoctor(c *gin.Context) {
 
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil || id < 1 {
