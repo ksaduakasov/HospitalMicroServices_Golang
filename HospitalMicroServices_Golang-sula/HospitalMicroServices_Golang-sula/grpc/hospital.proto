@@ -1,0 +1,31 @@
+syntax = "proto3";
+package grpc;
+option go_package="github.com\\Fring02\\HospitalMicroservices\\grpc\\hospitalpb;hospitalpb";
+// gr
+//protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative grpc/*.proto
+message DoctorsRequest{
+  int32 departmentId = 1;
+  int32 diseaseId = 3;
+  bool status = 2;
+}
+message DepartmentRequest{
+  int32 diseaseId = 1;
+}
+message DepartmentResponse{
+  int32 Id = 1;
+  string Name = 2;
+  string Description = 3;
+  int32 DiseaseId = 4;
+}
+message DoctorsResponse{
+  int32 doctorId = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string patronymic = 4;
+  int32 departmentId = 5;
+  double price = 6;
+}
+service DepartmentService{
+  rpc GetDoctors(DoctorsRequest) returns (stream DoctorsResponse);
+  rpc GetDepartmentByDiseaseId(DepartmentRequest) returns (DepartmentResponse);
+}
