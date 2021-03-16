@@ -41,5 +41,5 @@ func main() {
 	orderRepository = repositories.NewOrderRepository(pkg.Conn)
 	router := gin.Default()
 	RouteOrders(router)
-	router.Run(os.Getenv("HOST")) // listen and serve on port 4000
+	router.Run(os.Getenv("HOST"))
 }

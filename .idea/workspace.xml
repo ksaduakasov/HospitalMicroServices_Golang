@@ -19,28 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="28560f81-8ec2-4793-a455-78f83dbb7026" name="Default Changelist" comment="add server side grpc">
+    <list default="true" id="28560f81-8ec2-4793-a455-78f83dbb7026" name="Default Changelist" comment="Rework server side, add docker compose">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/api/departmenthandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/DepartmentMicroservice/api/departmenthandlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/api/doctorhandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/DepartmentMicroservice/api/doctorhandlers.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/core/doctor.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/doctor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/database/Database.go" beforeDir="false" afterPath="$PROJECT_DIR$/DepartmentMicroservice/database/Database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/grpcServerHandlers.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/pkg/repositories/DepartmentsRepository.go" beforeDir="false" afterPath="$PROJECT_DIR$/DepartmentMicroservice/pkg/repositories/DepartmentsRepository.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/pkg/repositories/DoctorsRepository.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DepartmentMicroservice/serve/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/DepartmentMicroservice/serve/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceptionService/api/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/api/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceptionService/api/orderhandlers.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/api/orderhandlers.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReceptionService/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ReceptionService/pkg/requests/requests.go" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/pkg/requests/requests.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/client/main.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/hospital.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital.proto" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/hospital.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/hospital_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/hospital_grpc.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/server.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/server/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ReceptionService/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/ReceptionService/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/client.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,20 +74,29 @@
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\DepartmentMicroservice\core" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\grpc" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\ReceptionService" />
-      <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\ReceptionService\pkg" />
       <recent name="C:\Users\ASUS\go\src\github.com\Fring02\HospitalMicroservices\grpc\client" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build github.com/Fring02/HospitalMicroservices/DepartmentMicroservice/serve">
+  <component name="RunManager" selected="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api">
     <configuration name="go build github.com/Fring02/HospitalMicroservices/DepartmentMicroservice/serve" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="HospitalMicroservices" />
       <working_directory value="$PROJECT_DIR$/DepartmentMicroservice" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/DepartmentMicroservice/serve/main.go" />
       <package value="github.com/Fring02/HospitalMicroservices/DepartmentMicroservice/serve" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build github.com/Fring02/HospitalMicroservices/DiseaseService/serve" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="HospitalMicroservices" />
+      <working_directory value="$PROJECT_DIR$/DiseaseService" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/DiseaseService/serve/main.go" />
+      <package value="github.com/Fring02/HospitalMicroservices/DiseaseService/serve" />
       <directory value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -118,19 +112,6 @@
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
-          <option name="sourceFilePath" value="docker-compose.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker-compose.yml.departmentapi: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="services">
-            <list>
-              <option value="departmentapi" />
-            </list>
-          </option>
           <option name="sourceFilePath" value="docker-compose.yml" />
         </settings>
       </deployment>
@@ -153,18 +134,18 @@
     </configuration>
     <list>
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-      <item itemvalue="Docker.docker-compose.yml.departmentapi: Compose Deployment" />
       <item itemvalue="Docker.grpc/Dockerfile" />
-      <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
       <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/DepartmentMicroservice/serve" />
+      <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/DiseaseService/serve" />
+      <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
+        <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/DiseaseService/serve" />
         <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/DepartmentMicroservice/serve" />
         <item itemvalue="Docker.grpc/Dockerfile" />
-        <item itemvalue="Docker.docker-compose.yml.departmentapi: Compose Deployment" />
-        <item itemvalue="Go Build.go build github.com/Fring02/HospitalMicroservices/ReceptionService/api" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +167,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add server side grpc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add server side grpc" />
+    <MESSAGE value="Rework server side, add docker compose" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rework server side, add docker compose" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -196,10 +178,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="602" y="195" key="#Go_Modules/0.0.1536.824@0.0.1536.824" timestamp="1614616913829" />
-    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614784901481">
+    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615903330772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1614784901481" />
+    <state x="219" y="0" width="1097" height="824" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1615903330772" />
     <state width="979" height="546" key="DebuggerActiveHint" timestamp="1614670135339">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -208,49 +190,60 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="496" y="110" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1614792549464" />
-    <state width="1485" height="281" key="GridCell.Tab.0.bottom" timestamp="1614796991899">
+    <state width="1485" height="295" key="GridCell.Tab.0.bottom" timestamp="1615912565292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614796991899" />
-    <state width="1485" height="281" key="GridCell.Tab.0.center" timestamp="1614796991899">
+    <state width="1485" height="295" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615912565292" />
+    <state width="1485" height="295" key="GridCell.Tab.0.center" timestamp="1615912565291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1614796991899" />
-    <state width="1485" height="281" key="GridCell.Tab.0.left" timestamp="1614796991899">
+    <state width="1485" height="295" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1615912565291" />
+    <state width="1485" height="295" key="GridCell.Tab.0.left" timestamp="1615912565291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1614796991899" />
-    <state width="1485" height="281" key="GridCell.Tab.0.right" timestamp="1614796991899">
+    <state width="1485" height="295" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1615912565291" />
+    <state width="1485" height="295" key="GridCell.Tab.0.right" timestamp="1615912565291">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="281" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1614796991899" />
-    <state width="1485" height="247" key="GridCell.Tab.1.bottom" timestamp="1614682030702">
+    <state width="1485" height="295" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1615912565291" />
+    <state width="1485" height="295" key="GridCell.Tab.1.bottom" timestamp="1615912565292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="247" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1614682030702" />
-    <state width="1485" height="247" key="GridCell.Tab.1.center" timestamp="1614682030702">
+    <state width="1485" height="295" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1615912565292" />
+    <state width="1485" height="295" key="GridCell.Tab.1.center" timestamp="1615912565292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="247" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1614682030702" />
-    <state width="1485" height="247" key="GridCell.Tab.1.left" timestamp="1614682030702">
+    <state width="1485" height="295" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1615912565292" />
+    <state width="1485" height="295" key="GridCell.Tab.1.left" timestamp="1615912565292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="247" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1614682030702" />
-    <state width="1485" height="247" key="GridCell.Tab.1.right" timestamp="1614682030702">
+    <state width="1485" height="295" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1615912565292" />
+    <state width="1485" height="295" key="GridCell.Tab.1.right" timestamp="1615912565292">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1485" height="247" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1614682030702" />
+    <state width="1485" height="295" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1615912565292" />
     <state x="153" y="0" key="SettingsEditor" timestamp="1614684930083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="153" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1614684930083" />
-    <state x="261" y="67" key="Vcs.Push.Dialog.v2" timestamp="1614703668794">
+    <state x="261" y="67" key="Vcs.Push.Dialog.v2" timestamp="1614835661201">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="261" y="67" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614703668794" />
+    <state x="261" y="67" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1614835661201" />
     <state x="347" y="-1" key="search.everywhere.popup" timestamp="1614685602783">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="347" y="-1" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1614685602783" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/DiseaseService/pkg/repositories/DiseaseRepository.go</url>
+          <line>35</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

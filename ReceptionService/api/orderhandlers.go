@@ -1,8 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/core/interfaces"
+	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg/auth"
 	"github.com/Fring02/HospitalMicroservices/ReceptionService/pkg/requests"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -37,12 +39,27 @@ func GetOrderById(c *gin.Context) {
 }
 
 func CreateOrder(c *gin.Context) {
+	err := auth.TokenValid(c.Request)
+	if err != nil {
+		c.Data(403, jsonContentType, []byte("Invalid token"))
+		return
+	}
+	userId, err := auth.ExtractTokenMetadata(c.Request)
+	if err != nil {
+		c.Data(403, jsonContentType, []byte(fmt.Sprintf("Failed to parse token: %v", err)))
+		return
+	}
+	if userId == 0 {
+		c.Data(401, jsonContentType, []byte("Unauthorized. Please, sign in"))
+		return
+	}
 	order := &core.Order{}
-	err := c.BindJSON(order)
+	err = c.BindJSON(order)
 	if err != nil {
 		c.Data(400, jsonContentType, []byte("Fill all fields"))
 		return
 	}
+	order.PatientId = userId
 	if orderRepository.CreateOrder(*order) {
 		c.Data(200, jsonContentType, []byte("Created order \n"))
 		log.Printf("Trying to find department with diseaseId: %v", order.DiseaseId)

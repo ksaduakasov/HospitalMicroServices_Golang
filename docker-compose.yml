@@ -1,0 +1,84 @@
+version: '3.4'
+
+services:
+  grpcserver:
+    container_name: grpcserver
+    depends_on:
+      - hospitaldb
+    build:
+      context: .
+      dockerfile: ./grpc/Dockerfile
+    environment:
+      - CONN=postgresql://host.docker.internal/hospital?user=postgres&password=Rubin1!!
+      - HOST=:4002
+    ports:
+      - "4002:4002"
+  hospitaldb:
+    image: postgres
+    container_name: hospitaldb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Rubin1!!
+      POSTGRES_DB: hospital
+  receptionapi:
+    image: ${DOCKER_REGISTRY-}receptionapi
+    container_name: receptionapi
+    build:
+      context: .
+      dockerfile: ./ReceptionService/Dockerfile
+    depends_on:
+      - hospitaldb
+      - grpcserver
+    environment:
+      - CONN=postgresql://host.docker.internal/hospital?user=postgres&password=Rubin1!!
+      - HOST=:4000
+      - DEPCONN=http://departmentapi:4001
+      - GRPC_SERVER_CONN=grpcserver:4002
+    ports:
+      - "4000:4000"
+  departmentapi:
+    image: ${DOCKER_REGISTRY-}departmentapi
+    container_name: departmentapi
+    build:
+      context: .
+      dockerfile: ./DepartmentMicroservice/Dockerfile
+    depends_on:
+      - hospitaldb
+      - grpcserver
+    environment:
+      - CONN=postgresql://host.docker.internal/hospital?user=postgres&password=Rubin1!!
+      - HOST=:4001
+    ports:
+      - "4001:4001"
+
+  diseaseapi:
+    image: ${DOCKER_REGISTRY-}diseaseapi
+    container_name: diseaseapi
+    build:
+      context: .
+      dockerfile: ./DiseaseService/Dockerfile
+    depends_on:
+      - hospitaldb
+      - grpcserver
+    environment:
+      - CONN=postgresql://host.docker.internal/hospital?user=postgres&password=Rubin1!!
+      - HOST=:4003
+    ports:
+      - "4003:4003"
+
+  userapi:
+    image: ${DOCKER_REGISTRY-}userapi
+    container_name: userapi
+    build:
+      context: .
+      dockerfile: ./UserService/Dockerfile
+    depends_on:
+      - hospitaldb
+      - grpcserver
+    environment:
+      - CONN=postgresql://host.docker.internal/hospital?user=postgres&password=Rubin1!!
+      - HOST=:4004
+    ports:
+      - "4004:4004"
+
+
